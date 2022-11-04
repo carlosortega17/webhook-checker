@@ -31,6 +31,10 @@ app.get('/', (req, res) => {
   res.render('index', { webhooks });
 });
 
+app.get('/favicon.ico', (req, res) => {
+  res.status(200).send();
+});
+
 app.get('*', appendWebhook);
 
 app.post('*', appendWebhook);
