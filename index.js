@@ -13,17 +13,20 @@ app.use(cors({
   origin: '*',
 }));
 
-const webhooks = [];
+let webhooks = [];
 
 const appendWebhook = (req, res) => {
-  webhooks.push({
-    url: req.url,
-    method: req.method,
-    headers: req.headers,
-    body: req.body,
-    params: req.params,
-    query: req.query,
-  });
+  webhooks = [
+    {
+      url: req.url,
+      method: req.method,
+      headers: req.headers,
+      body: req.body,
+      params: req.params,
+      query: req.query,
+    },
+    ...webhooks,
+  ];
   res.status(200).send();
 };
 
